@@ -4,7 +4,7 @@ import gc  # Garbage Collector
 
 # Function to reset state of randomness and clear global variables
 def reset_state():
-    """重置随机数生成器的状态，并清除全局变量。"""
+    """Reset the state of random number generators and clear global variables."""
     np.random.seed(None)  # Reset NumPy random seed
     pd.options.mode.chained_assignment = None  # Default warning setting
     gc.collect()  # Execute garbage collection
@@ -145,46 +145,6 @@ def get_activation_fn():
 # Get nonlinearity name
 def get_nonlinearity():
     return 'leaky_relu'
-
-
-# Training function
-def train(model, device, train_loader, optimizer, criterion):
-    model.train()  # Set model to training mode
-    total_loss = 0  # Accumulate loss over all batches
-    predictions = []
-    targets = []
-    for features, labels in train_loader:
-        # Ensure features and labels are on the correct device
-        features = features.float().to(device)
-        labels = labels.float().to(device)
-
-        # Zero gradients
-        optimizer.zero_grad()
-
-        # Forward pass
-        outputs = model(features)
-
-        # Adjust labels size to match outputs size
-        labels = labels.view_as(outputs)
-
-        # Compute loss
-        loss = criterion(outputs, labels)
-
-        # Backward pass and optimization
-        loss.backward()
-        optimizer.step()
-
-        # Accumulate loss
-        total_loss += loss.item()
-        # Collect predictions and true labels to compute MCC, analyze fitting situation on training set
-        predictions.extend(torch.sigmoid(outputs).detach().cpu().numpy().flatten())
-        targets.extend(labels.cpu().numpy().flatten())
-        
-    # Compute and return average loss
-    avg_loss = total_loss / len(train_loader)
-    # Compute and return MCC
-    mcc = matthews_corrcoef(targets, [1 if p > 0.5 else 0 for p in predictions])
-    return avg_loss, mcc
 
 
 # Validation function

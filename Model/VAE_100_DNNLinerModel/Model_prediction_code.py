@@ -98,6 +98,7 @@ def custom_collate_fn(batch):
 def get_activation_fn():
     return nn.LeakyReLU(inplace=False)  # Disable in-place operation
 
+
 def get_nonlinearity():
     return 'leaky_relu'
 
@@ -137,6 +138,7 @@ def validate(model, device, val_loader, criterion):
     mcc = matthews_corrcoef(targets, [1 if p > 0.5 else 0 for p in predictions])
     return avg_loss, mcc
 
+
 def set_seed(seed=42):
     """Set the random seed for reproducibility."""
     # Set Python's built-in random module seed
@@ -155,6 +157,7 @@ def set_seed(seed=42):
     # Disable cudnn benchmarking to ensure deterministic behavior
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = False
+
 
 # Call function to set seed
 set_seed(42)
