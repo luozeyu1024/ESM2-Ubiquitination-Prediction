@@ -185,6 +185,7 @@ num_epochs = int(best_params['num_epochs'])
 ## Independent test set
 test_dataset = SequenceDataset(test_features, test_info_df)
 test_loader = DataLoader(test_dataset, batch_size=64, shuffle=False, collate_fn=custom_collate_fn, drop_last=False)
+#test_loader = DataLoader(test_dataset, batch_size=64, shuffle=False)
 
 
 # Create model
@@ -209,3 +210,4 @@ test_loss, test_mcc = validate(model, device, test_loader, criterion)
 
 message = f"Test Loss: {test_loss:.6f}, Test MCC: {test_mcc:.6f}"
 print(message)
+
