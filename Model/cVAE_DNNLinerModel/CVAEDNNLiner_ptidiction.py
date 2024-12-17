@@ -350,7 +350,7 @@ z_dim = 100
 model = CVAEDNNLiner(input_dim, hidden_dim, z_dim)
 
 # Load the trained model weights
-model.load_state_dict(torch.load(os.path.join(open_path, "ESM2-Ubiquitination-Prediction", "Model", "cVAE_DNNLinearModel", "CVAE_Z_checkpoint_epoch_75.pth")))
+model.load_state_dict(torch.load(os.path.join(open_path, "ESM2-Ubiquitination-Prediction", "Model", "cVAE_DNNLinerModel", "CVAE_Z_checkpoint_epoch_75.pth")))
 
 # Move the model to the specified device
 model.to(device)
