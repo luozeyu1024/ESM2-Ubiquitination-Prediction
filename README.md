@@ -1,22 +1,16 @@
-# ESM2-Ubiquitination-Prediction
+# ESM2-泛素化预测
 
-## Model
+## 模型
 
-In this project, we have constructed four deep learning models for the ubiquitination site prediction task, which specifically include:
+在本项目中，我们为泛素化位点预测任务构建了四种深度学习模型，具体包括：
 
-- [**DNN_LinerModel**](https://github.com/EUP-laboratory/ESM2-Ubiquitination-Prediction/tree/main/Model/DNNLinerModel): A linear model based on fully connected layers (Dense Layer). This model directly learns the prediction rules of ubiquitination sites from raw input data.
-- [**ResDNNModel**](https://github.com/EUP-laboratory/ESM2-Ubiquitination-Prediction/tree/main/Model/ResDNNModel): A deep neural network model that introduces residual blocks (Residual Block). Through the residual learning mechanism, this model can effectively alleviate the problem of vanishing gradients, enhancing the model's ability to learn from deep structures.
-- **[VAE_DNNLinerModel](https://github.com/EUP-laboratory/ESM2-Ubiquitination-Prediction/tree/main/Model/VAE_DNNLinerModel)**: A composite model combining Variational Autoencoder (VAE) with DNN_LinerModel. It first uses VAE to perform feature reconstruction and dimensionality reduction on the input data, then feeds the processed features into the DNN_LinerModel for ubiquitination site prediction.
-- **[VAE_ResDNNModel](https://github.com/EUP-laboratory/ESM2-Ubiquitination-Prediction/tree/main/Model/VAE_ResDNNModel)**: Similar to VAE_DNNLinerModel, but in the feature extraction phase, it adopts a more complex ResDNNModel architecture, aiming to further improve the model's predictive performance.
+- **DNN_LinerModel**：基于全连接层（Dense Layer）的线性模型。该模型直接从原始输入数据中学习泛素化位点的预测规则。
+- **ResDNNModel**：引入残差块（Residual Block）的深度神经网络模型。通过残差学习机制，该模型可以有效缓解梯度消失问题，增强模型从深层结构中学习的能力。
+- **VAE_DNNLinerModel**：结合变分自编码器（VAE）与DNN_LinerModel的复合模型。首先使用VAE对输入数据进行特征重构和降维处理，然后将处理后的特征输入到DNN_LinerModel中进行泛素化位点预测。
+- **VAE_ResDNNModel**：与VAE_DNNLinerModel类似，但在特征提取阶段采用了更复杂的ResDNNModel架构，旨在进一步提高模型的预测性能。
 
-Furthermore, corresponding supervised learning stage modules are provided for both VAE_DNNLinerModel and VAE_ResDNNModel:
+## 推理测试数据
 
-- **[VAE_100_DNNLinerModel](https://github.com/EUP-laboratory/ESM2-Ubiquitination-Prediction/tree/main/Model/VAE_100_DNNLinerModel)**: Based on VAE_DNNLinerModel, but removes the feature reconstruction and dimensionality reduction steps of the VAE.
-- [**VAE_100_ResDNNModel**](https://github.com/EUP-laboratory/ESM2-Ubiquitination-Prediction/tree/main/Model/VAE_100_ResDNNModel): Similar to VAE_100_DNNLinerModel, except that it uses the ResDNNModel architecture during the supervised learning phase.
+为了评估上述模型的性能，我们准备了一个测试数据集：
 
-## Inference_test_data
-
-To evaluate the performance of the above models, we have prepared a test dataset:
-
-- **[ESM2_3B_2560](https://github.com/EUP-laboratory/ESM2-Ubiquitination-Prediction/tree/main/Inference_test_data/ESM2_3B_2560)**: This dataset contains raw input data without any preprocessing, suitable for testing all models (DNN_LinerModel, ResDNNModel, VAE_DNNLinerModel, VAE_ResDNNModel).
-- [**ESM2_3B_VAE_100**](https://github.com/EUP-laboratory/ESM2-Ubiquitination-Prediction/tree/main/Inference_test_data/ESM2_3B_VAE_100): This is the result obtained by applying VAE for feature reconstruction and dimensionality reduction on the ESM2_3B_2560 dataset. This dataset is specially designed to validate the performance of VAE_100_DNNLinerModel and VAE_100_ResDNNModel models, to explore the impact of feature dimensionality reduction on model prediction accuracy.
+- **ESM2_3B_2560**：该数据集包含未经任何预处理的原始输入数据，适用于测试所有模型。
