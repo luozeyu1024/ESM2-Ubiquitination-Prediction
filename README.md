@@ -1,16 +1,16 @@
-# ESM2-泛素化预测
+# ESM2-Ubiquitination Prediction
 
-## 模型
+## Models
 
-在本项目中，我们为泛素化位点预测任务构建了四种深度学习模型，具体包括：
+In this project, we have constructed four deep learning models for the ubiquitination site prediction task, specifically including:
 
-- **DNN_LinerModel**：基于全连接层（Dense Layer）的线性模型。该模型直接从原始输入数据中学习泛素化位点的预测规则。
-- **ResDNNModel**：引入残差块（Residual Block）的深度神经网络模型。通过残差学习机制，该模型可以有效缓解梯度消失问题，增强模型从深层结构中学习的能力。
-- **VAE_DNNLinerModel**：结合变分自编码器（VAE）与DNN_LinerModel的复合模型。首先使用VAE对输入数据进行特征重构和降维处理，然后将处理后的特征输入到DNN_LinerModel中进行泛素化位点预测。
-- **VAE_ResDNNModel**：与VAE_DNNLinerModel类似，但在特征提取阶段采用了更复杂的ResDNNModel架构，旨在进一步提高模型的预测性能。
+- **[DNNLinerModel](https://github.com/EUP-laboratory/ESM2-Ubiquitination-Prediction/tree/main/Model/DNNLinerModel)**: A linear model based on fully connected layers (Dense Layer). This model directly learns the prediction rules of ubiquitination sites from raw input data.
+- **[ResDNNModel](https://github.com/EUP-laboratory/ESM2-Ubiquitination-Prediction/tree/main/Model/ResDNNModel)**: A deep neural network model that introduces residual blocks (Residual Block). Through the residual learning mechanism, this model can effectively alleviate the problem of vanishing gradients, enhancing the model's ability to learn from deep structures.
+- **[cVAE_DNNLinerModel](https://github.com/EUP-laboratory/ESM2-Ubiquitination-Prediction/tree/main/Model/cVAE_DNNLinearModel)**: A conditional VAE model combining a Residual Variational Autoencoder (ResVAE) with DNN_LinerModel as the classification head. This model framework is trained with both reconstruction and classification objectives. During prediction, the features are directly input into the model framework, and ubiquitination site prediction is performed in the classification head DNN_LinerModel.
+- **[cVAE_ResDNNModel](https://github.com/EUP-laboratory/ESM2-Ubiquitination-Prediction/tree/main/Model/cVAE_ResDNNModel)**: A conditional VAE model combining a Residual Variational Autoencoder (ResVAE) with ResDNNModel as the classification head. This model framework is trained with both reconstruction and classification objectives. During prediction, the features are directly input into the model framework, and ubiquitination site prediction is performed in the classification head ResDNNModel.
 
-## 推理测试数据
+## Inference Test Data
 
-为了评估上述模型的性能，我们准备了一个测试数据集：
+To evaluate the performance of the above models, we have prepared a test dataset:
 
-- **ESM2_3B_2560**：该数据集包含未经任何预处理的原始输入数据，适用于测试所有模型。
+- **[ESM2_3B_2560](https://github.com/EUP-laboratory/ESM2-Ubiquitination-Prediction/tree/main/Inference_test_data/ESM2_3B_2560)**: This dataset contains raw input data without any preprocessing, suitable for testing all models.
