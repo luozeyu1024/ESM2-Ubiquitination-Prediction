@@ -14,7 +14,7 @@ To evaluate the performance of the EUP models, we have prepared a independent te
 - **[ESM2_3B_2560](https://github.com/EUP-laboratory/ESM2-Ubiquitination-Prediction/tree/main/Inference_test_data/ESM2_3B_2560)**: This dataset contains raw input data without any preprocessing, suitable for testing all models.
 
 ## EUP Environment Setup
-You can follow the instructions provided at ESM2-Ubiquitination-Prediction/Instruction/EUP Online Analysis Guide.md to use the [web server](https://eup.aibtit.com) for online predictions.
+You can follow the instructions provided at [ESM2-Ubiquitination-Prediction/Instruction/EUP Online Analysis Guide.md](https://github.com/EUP-laboratory/ESM2-Ubiquitination-Prediction/tree/main/Instruction) to use the [web server](https://eup.aibtit.com) for online predictions.
 ## Models
 
 In this project, we have constructed four deep learning models for the ubiquitination site prediction task, specifically including:
